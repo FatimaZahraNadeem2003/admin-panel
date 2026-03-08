@@ -1,10 +1,12 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import React from 'react';
 import { 
   LayoutDashboard, FileText, Layers, Library, Tag, Megaphone, 
   BarChart3, Users, Search, Bell, ChevronDown, MessageSquare, MoreHorizontal 
 } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import {XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 
 const data = [
   { name: 'Jan', views: 300000 },

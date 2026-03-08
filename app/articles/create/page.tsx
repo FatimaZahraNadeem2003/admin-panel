@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from 'react';
-import { 
-  ChevronRight, Eye, Save, Bell, X, Plus, Image as ImageIcon, 
-  Type, Quote, Minus, Link2, AlignLeft, MessageSquare, ChevronDown, Maximize2, Trash2
+import {
+  ChevronRight, Eye, Save, Bell, X, Image as ImageIcon,
+  Quote, Link2, AlignLeft, ChevronDown, Maximize2, Trash2
 } from 'lucide-react';
 
 export default function ArticleEditor() {
@@ -19,7 +19,7 @@ export default function ArticleEditor() {
             <span className="text-gray-800">Create / Edit</span>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-4">
           <div className="hidden lg:flex items-center gap-2 text-xs text-gray-400">
             <div className="w-2 h-2 rounded-full bg-green-500"></div>
@@ -37,13 +37,13 @@ export default function ArticleEditor() {
       </header>
 
       <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row p-4 lg:p-8 gap-8">
-        
+
         <div className="flex-1 space-y-6">
           <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
             <div className="mb-8">
-              <input 
-                type="text" 
-                placeholder="Article Title" 
+              <input
+                type="text"
+                placeholder="Article Title"
                 className="text-5xl font-serif w-full outline-none placeholder:text-gray-200"
               />
               <div className="flex items-center gap-2 text-sm text-gray-400 mt-4 font-mono">
@@ -53,7 +53,7 @@ export default function ArticleEditor() {
 
             <div className="mb-8 border border-gray-100 rounded-lg p-4 bg-[#FCFBFA]">
               <label className="text-xs font-bold text-gray-400 uppercase mb-2 block">Summary</label>
-              <textarea 
+              <textarea
                 placeholder="Write a brief summary of the article (150-200 words)..."
                 className="w-full bg-transparent outline-none text-gray-600 resize-none h-24"
               ></textarea>
@@ -61,29 +61,29 @@ export default function ArticleEditor() {
             </div>
 
             <div className="flex items-center justify-between border-b border-gray-100 pb-4 mb-6">
-               <div className="flex items-center gap-4 text-gray-500 overflow-x-auto pb-2">
-                  <div className="flex items-center gap-1 border-r pr-4">Paragraph <ChevronDown size={14}/></div>
-                  <button className="font-bold">B</button>
-                  <button className="italic">I</button>
-                  <button className="underline">U</button>
-                  <div className="w-[1px] h-4 bg-gray-200 mx-2"></div>
-                  <AlignLeft size={18} />
-                  <Quote size={18} />
-                  <Link2 size={18} />
-                  <ImageIcon size={18} />
-               </div>
-               <div className="hidden sm:flex gap-4">
-                  <div className="flex bg-gray-100 p-1 rounded-md text-xs">
-                    <button className={`px-4 py-1 rounded ${activeTab === 'Editor' ? 'bg-white shadow-sm' : ''}`} onClick={()=>setActiveTab('Editor')}>Editor</button>
-                    <button className={`px-4 py-1 rounded ${activeTab === 'Preview' ? 'bg-white shadow-sm' : ''}`} onClick={()=>setActiveTab('Preview')}>Preview</button>
-                  </div>
-                  <Maximize2 size={18} className="text-gray-400" />
-               </div>
+              <div className="flex items-center gap-4 text-gray-500 overflow-x-auto pb-2">
+                <div className="flex items-center gap-1 border-r pr-4">Paragraph <ChevronDown size={14} /></div>
+                <button className="font-bold">B</button>
+                <button className="italic">I</button>
+                <button className="underline">U</button>
+                <div className="w-[1px] h-4 bg-gray-200 mx-2"></div>
+                <AlignLeft size={18} />
+                <Quote size={18} />
+                <Link2 size={18} />
+                <ImageIcon size={18} />
+              </div>
+              <div className="hidden sm:flex gap-4">
+                <div className="flex bg-gray-100 p-1 rounded-md text-xs">
+                  <button className={`px-4 py-1 rounded ${activeTab === 'Editor' ? 'bg-white shadow-sm' : ''}`} onClick={() => setActiveTab('Editor')}>Editor</button>
+                  <button className={`px-4 py-1 rounded ${activeTab === 'Preview' ? 'bg-white shadow-sm' : ''}`} onClick={() => setActiveTab('Preview')}>Preview</button>
+                </div>
+                <Maximize2 size={18} className="text-gray-400" />
+              </div>
             </div>
 
             <div className="min-h-[400px]">
-               <h3 className="text-2xl text-gray-300 font-serif mb-4">Start writing your article...</h3>
-               <p className="text-gray-300 italic">Type / to insert image, quote, divider, or media</p>
+              <h3 className="text-2xl text-gray-300 font-serif mb-4">Start writing your article...</h3>
+              <p className="text-gray-300 italic">Type / to insert image, quote, divider, or media</p>
             </div>
 
             <div className="mt-12 flex items-center justify-between pt-6 border-t border-gray-100 text-[11px] text-gray-400 uppercase tracking-widest">
@@ -111,38 +111,38 @@ export default function ArticleEditor() {
 
         <aside className="w-full lg:w-80 space-y-6">
           <ControlSection title="Publishing Controls">
-             <div className="space-y-4">
-               <label className="text-xs text-gray-400 uppercase block">Status</label>
-               <div className="flex border border-gray-200 rounded-md p-1 bg-white">
-                 <button className="flex-1 py-1.5 text-sm bg-gray-50 border border-gray-100 rounded shadow-sm">Draft</button>
-                 <button className="flex-1 py-1.5 text-sm text-gray-400">Published</button>
-               </div>
-               <div className="flex items-center justify-between text-sm py-2">
-                 <span className="text-gray-500 italic">Schedule publish date</span>
-                 <div className="w-10 h-5 bg-gray-200 rounded-full"></div>
-               </div>
-             </div>
+            <div className="space-y-4">
+              <label className="text-xs text-gray-400 uppercase block">Status</label>
+              <div className="flex border border-gray-200 rounded-md p-1 bg-white">
+                <button className="flex-1 py-1.5 text-sm bg-gray-50 border border-gray-100 rounded shadow-sm">Draft</button>
+                <button className="flex-1 py-1.5 text-sm text-gray-400">Published</button>
+              </div>
+              <div className="flex items-center justify-between text-sm py-2">
+                <span className="text-gray-500 italic">Schedule publish date</span>
+                <div className="w-10 h-5 bg-gray-200 rounded-full"></div>
+              </div>
+            </div>
           </ControlSection>
 
           <ControlSection title="Category">
-             <select className="w-full border border-gray-200 rounded-md p-2 bg-white text-sm outline-none">
-               <option>Select Category</option>
-             </select>
+            <select className="w-full border border-gray-200 rounded-md p-2 bg-white text-sm outline-none">
+              <option>Select Category</option>
+            </select>
           </ControlSection>
 
           <ControlSection title="Tags">
-             <input type="text" placeholder="Add tags..." className="w-full border border-gray-200 rounded-md p-2 mb-3 text-sm" />
-             <div className="flex flex-wrap gap-2">
-               <Tag label="Halal Economy" />
-               <Tag label="Finance" />
-               <button className="text-[#A68B5C] text-xs font-bold">+ New</button>
-             </div>
+            <input type="text" placeholder="Add tags..." className="w-full border border-gray-200 rounded-md p-2 mb-3 text-sm" />
+            <div className="flex flex-wrap gap-2">
+              <Tag label="Halal Economy" />
+              <Tag label="Finance" />
+              <button className="text-[#A68B5C] text-xs font-bold">+ New</button>
+            </div>
           </ControlSection>
 
           <ControlSection title="Featured Image">
             <div className="border-2 border-dashed border-gray-200 rounded-lg p-8 flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-white transition-colors">
-               <ImageIcon size={32} className="text-gray-300" />
-               <p className="text-xs text-gray-500 text-center">Drag & Drop image<br/><span className="underline">or Browse</span></p>
+              <ImageIcon size={32} className="text-gray-300" />
+              <p className="text-xs text-gray-500 text-center">Drag & Drop image<br /><span className="underline">or Browse</span></p>
             </div>
           </ControlSection>
         </aside>
