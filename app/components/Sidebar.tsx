@@ -21,6 +21,13 @@ export default function Sidebar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
+  const isActiveLink = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
+  };
+
   return (
     <>
       <button 
@@ -47,7 +54,7 @@ export default function Sidebar() {
         
         <nav className="flex-1 px-4 space-y-1 mt-6">
           {navItems.map((item) => {
-            const isActive = pathname.startsWith(item.href);
+            const isActive = isActiveLink(item.href);
             return (
               <Link 
                 key={item.href} 
@@ -55,11 +62,21 @@ export default function Sidebar() {
                 onClick={() => setIsOpen(false)}
                 className={`
                   flex items-center gap-3 px-4 py-3 rounded-lg transition-all group
-                  ${isActive ? 'bg-[#3D3E44] text-white' : 'hover:text-white hover:bg-[#3D3E44]/50'}
+                  ${isActive 
+                    ? 'bg-[#3D3E44] text-white' 
+                    : 'hover:text-white hover:bg-[#3D3E44]/50'
+                  }
                 `}
               >
-                <item.icon size={20} className={isActive ? 'text-[#A68B5C]' : 'group-hover:text-[#A68B5C]'} />
+                <item.icon 
+                  size={20} 
+                  className={isActive ? 'text-[#A68B5C]' : 'group-hover:text-[#A68B5C]'} 
+                />
                 <span className="text-sm font-medium">{item.label}</span>
+                
+                {isActive && (
+                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#A68B5C]"></span>
+                )}
               </Link>
             );
           })}
@@ -67,10 +84,26 @@ export default function Sidebar() {
           <div className="pt-10">
             <Link 
               href="/admin-users"
-              className={`flex items-center gap-3 px-4 py-3 rounded-lg hover:text-white ${pathname === '/admin-users' ? 'text-white' : ''}`}
+              onClick={() => setIsOpen(false)}
+              className={`
+                flex items-center gap-3 px-4 py-3 rounded-lg transition-all group
+                ${pathname === '/admin-users' || pathname.startsWith('/admin-users')
+                  ? 'bg-[#3D3E44] text-white' 
+                  : 'hover:text-white hover:bg-[#3D3E44]/50'
+                }
+              `}
             >
-              <Users size={20} />
+              <Users 
+                size={20} 
+                className={pathname === '/admin-users' || pathname.startsWith('/admin-users')
+                  ? 'text-[#A68B5C]' 
+                  : 'group-hover:text-[#A68B5C]'
+                } 
+              />
               <span className="text-sm font-medium">Admin Users</span>
+              {(pathname === '/admin-users' || pathname.startsWith('/admin-users')) && (
+                <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#A68B5C]"></span>
+              )}
             </Link>
           </div>
         </nav>

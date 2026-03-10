@@ -1,10 +1,8 @@
 "use client";
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React from 'react';
 import { 
-  LayoutDashboard, FileText, Layers, Library, Tag, Megaphone, 
-  BarChart3, Users, Search, Bell, ChevronDown, MessageSquare, MoreHorizontal 
+  Search, Bell, ChevronDown, MessageSquare, MoreHorizontal 
 } from 'lucide-react';
 import {XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 
@@ -21,21 +19,6 @@ const data = [
 export default function Dashboard() {
   return (
     <div className="flex min-h-screen bg-[#F9F7F2] font-sans text-[#2D2E32]">
-      <aside className="hidden lg:flex w-64 bg-[#2D2E32] text-gray-400 flex-col">
-        <div className="p-6 text-white text-xl font-serif">EmaanMall <span className="text-[#A68B5C]">Insights</span></div>
-        <nav className="flex-1 px-4 space-y-2 mt-4">
-          <NavItem icon={<LayoutDashboard size={20} />} label="Dashboard" active />
-          <NavItem icon={<FileText size={20} />} label="Articles" />
-          <NavItem icon={<Layers size={20} />} label="Categories" />
-          <NavItem icon={<Library size={20} />} label="Editions" />
-          <NavItem icon={<Tag size={20} />} label="Tags" />
-          <NavItem icon={<Megaphone size={20} />} label="Ads" />
-          <NavItem icon={<BarChart3 size={20} />} label="Analytics" />
-          <div className="pt-10">
-            <NavItem icon={<Users size={20} />} label="Admin Users" />
-          </div>
-        </nav>
-      </aside>
 
       <main className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <header className="h-16 border-b border-gray-200 bg-white flex items-center justify-between px-4 lg:px-8">
@@ -137,14 +120,6 @@ export default function Dashboard() {
   );
 }
 
-function NavItem({ icon, label, active = false }: { icon: any, label: string, active?: boolean }) {
-  return (
-    <div className={`flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-all ${active ? 'bg-[#3D3E44] text-white shadow-sm' : 'hover:text-white'}`}>
-      {icon}
-      <span className="text-sm font-medium">{label}</span>
-    </div>
-  );
-}
 
 function StatCard({ title, value, highlight = false }: { title: string, value: string, highlight?: boolean }) {
   return (
